@@ -9,5 +9,4 @@ jobs:
       environment-secrets: |
         SECRET_TEST=${{ secrets.TEST }}
         SECRET_TEST2=${{ secrets.TEST2 }}
-        SECRET_TEST3=${{ secrets.TEST3 }}
 
