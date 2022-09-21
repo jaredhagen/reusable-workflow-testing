@@ -2,11 +2,14 @@ name: test
 
 on: workflow_dispatch
 
+env:
+  TEST: workflow_env
+
 jobs:
   test:
     uses: ./.github/workflows/reusable-workflow.yml
     secrets:
       environment-secrets: |
-        SECRET_TEST=${{ secrets.TEST }}
+        SECRET_TEST=${{ env.TEST }}
         SECRET_TEST2=${{ secrets.TEST2 }}
 
