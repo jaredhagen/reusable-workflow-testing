@@ -1,0 +1,20 @@
+on:
+  workflow_call:
+    inputs:
+      environment-variables:
+        required: true
+        type: string
+
+    secrets:
+      environment-secrets:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      shell: bash
+      run: |
+        echo ${{ inputs.environment }}
+        echo ${{ inputs.environment-secrets }}
