@@ -3,7 +3,6 @@ on:
     secrets:
       environment-secrets:
         required: true
-        type: string
 
 jobs:
   test:
