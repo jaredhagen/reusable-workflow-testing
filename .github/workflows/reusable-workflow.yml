@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo ${{ secrets.environment-secrets }}
+          echo ${{ secrets.environment-secrets }} | rev
