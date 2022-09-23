@@ -12,11 +12,12 @@ jobs:
     steps:
       - id: environment-variables
         run: |
-          read -r -d '' ENV_VARS <<- EndOfEnvironmentVariables
-            ENV_TEST=${{ env.TEST }}
-            SECRET_TEST=${{ secrets.TEST }}
-            SECRET_TEST2=${{ secrets.TEST2 }}
+          ENV_VARS=$(cat <<EndOfEnvironmentVariables
+          ENV_TEST=${{ env.TEST }}
+          SECRET_TEST=${{ secrets.TEST }}
+          SECRET_TEST2=${{ secrets.TEST2 }}
           EndOfEnvironmentVariables
+          )
           echo "::set-output name=environment-variables::${ENV_VARS}"
     outputs:
       environment-variables: ${{ steps.environment-variables.outputs.environment-variables }}
@@ -26,4 +27,3 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yml
     secrets:
       environment-secrets: ${{ needs.environment-variables.outputs.environment-variables }}
-
