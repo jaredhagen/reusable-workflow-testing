@@ -7,10 +7,12 @@ env:
 
 jobs:
 
+
   environment-variables:
     runs-on: ubuntu-latest
     steps:
       - id: environment-variables
+        # https://github.com/orgs/community/discussions/26288
         run: |
           ENV_VARS=$(cat <<EndOfEnvironmentVariables
           ENV_TEST=${{ env.TEST }}
@@ -18,6 +20,9 @@ jobs:
           SECRET_TEST2=${{ secrets.TEST2 }}
           EndOfEnvironmentVariables
           )
+          ENV_VARS="${ENV_VARS//'%'/'%25'}"
+          ENV_VARS="${ENV_VARS//$'\n'/'%0A'}"
+          ENV_VARS="${ENV_VARS//$'\r'/'%0D'}"
           echo "::set-output name=environment-variables::${ENV_VARS}"
     outputs:
       environment-variables: ${{ steps.environment-variables.outputs.environment-variables }}
