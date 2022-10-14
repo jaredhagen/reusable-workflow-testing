@@ -2,7 +2,7 @@ on:
   workflow_call:
     secrets:
       environment-secrets:
-        required: true
+        required: false
 
 jobs:
   test:
