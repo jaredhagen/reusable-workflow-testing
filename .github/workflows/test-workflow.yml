@@ -31,5 +31,5 @@ jobs:
   test:
     needs: environment-variables
     uses: ./.github/workflows/reusable-workflow.yml
-    secrets:
-      environment-secrets: ${{ needs.environment-variables.outputs.environment-variables }}
+#     secrets:
+#       environment-secrets: ${{ needs.environment-variables.outputs.environment-variables }}
